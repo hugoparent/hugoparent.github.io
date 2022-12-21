@@ -102,7 +102,7 @@
           <div class="col-lg-6 pt-4 pt-lg-0">
             <!-- make the title in the center of the text-->
             <h3>
-              <center>Wikipedia, the ocean of links</center>
+              <center>Wikipedia, the Ocean of Links</center>
             </h3>
             <p>
               Wikipedia is the world’s largest online encyclopedia, comprising millions of pages and links between pages.
@@ -112,6 +112,7 @@
               Articles which links to many places generally cover important topics and are more likely to be visited while 
               link surfing. The United States article , for instance, has a wave of 294 links, so be prepared for a wild ride.
             </p>
+
           
           </div>
         <!-- 
@@ -235,6 +236,7 @@
 
             </style>
           </head>
+          
           <body>
             <div class="image-container">
               <div class="image-text">
@@ -259,82 +261,64 @@
               </div>
             </div>
           </body>
-          </html>
-          Are we able to compare the popularity of articles based on their number of clicks?  
-          Well, the answer is no. We should notice that there is a bias in our reasoning. If we focus on the number of clicks, we miss an important covariate: the number of links pointing to an article can probably greatly influence the number of clicks. In other words, articles which have a very high number of impressions will probably be the ones which are the most clicked on regardless of their position. And looking at the top articles in terms of impressions, this seems indeed to be the case.
-          <div class="col-lg-12" style="height: 50px"></div>
 
+          <p>
+            So, let's try to dig in and understand why these articles are the most popular ones. 
+            The focus of this article is really to investigate the impact of the position of the links within a page. So let's look at that by plotting the density map highilighting where the clicks are usually done.
+          </p>
+
+          <iframe src="assets/plotly/density_map.html" width="1200" height="700", class="center"></iframe>
+          </html>
+
+
+          <p>So, are we able to compare the popularity of articles based on their number of clicks?  
+            Well, the answer is no. We should notice that there is a bias in our reasoning. If we focus on the number of clicks, we miss an important covariate: the number of links pointing to an article can probably greatly influence the number of clicks. In other words, links which have a very high number of impressions will probably be the ones which are the most clicked on regardless of their position. And looking at the top articles in terms of impressions, this seems indeed to be the case.</p>
+          
+          <div class="col-lg-12" style="height: 50px"></div>
+          
+          <p>
+            We can easily verify that. In web analytics, there is one metrics which is exactly made for that: the impressions! These refer to how often the links have appeared on the journeys of all players.
+          </p>
           <div class="col-lg-12 content">
             <center>
             <img src="assets/img/top5_impressions.jpg" height="400" width="400  " alt="top5_impressions" class="center">
             </center>
           </div>         
+          <p> 
+          So unsurprisingly, the ranking is roughly the same as above. Links which are the most often clicked may only be the ones which appear the most often. We need to go beyond this analysis.
+          </p>
+
+          <p> 
+          Fortunately, there is one metrics much more relevant than the number of clicks that is here to save us: the Click-Through Rate (CTR). It corresponds to how many clicks are generated for each impression.
+          </p>
+
+          <p>
+          Now, if we rank the articles according to their CTR, and we omit the outliers with very low number of impressions (less than Q1), we get
+            TODO
+          </p>
 
       </div>
     </section><!-- End Skills Section -->
 
     <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
+    <section id="Data Analysis" class="analysis">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Resume</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Digging Into the Structure of the Wikispeedia Data</h2>
+          <p>Now that we have well defined our target metric, let's continue our investigation: do users take the time to go through all the articles, or do they prefer to click on the very first links that appear on the page?
+          TODO: plot CTR y</p>
+
+          <p>
+            It would seem that indeed, links on top of the pages are among the most popular. Another way to visualize this relation is by performing an ordinary least squares regression (OLS). As a result, we obtain the following regression plot:
+            TODO : plot
+          </p>
+
+          <p>Again, we see that in general, links positioned on top tend to have a higher CTR. </p>
+
         </div>
 
-        <div class="row">
-          <div class="col-lg-6">
-            <h3 class="resume-title">Sumary</h3>
-            <div class="resume-item pb-0">
-              <h4>Brandon Johnson</h4>
-              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-              <ul>
-                <li>Portland par 127,Orlando, FL</li>
-                <li>(123) 456-7891</li>
-                <li>alice.barkley@example.com</li>
-              </ul>
-            </div>
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Master of Fine Arts &amp; Graphic Design</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-            </div>
-            <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      
 
       </div>
     </section><!-- End Resume Section -->
