@@ -217,6 +217,7 @@
         <center>
         <iframe src="assets/plotly/graph_wikispeedia.html" width="1250" height="900", class="center"></iframe>
         </center>
+        <p>The network is especially complex, as each article having in average 27.2 links pointing to another article. The article about the United-States has no less than 1435 links pointing to it... And remember that Wikispeedia is only a fraction of the Wikipedia dataset of articles, we can easily understand the complexity of the structure. Instead, let's try to only capture the most clicked articles.</p>
         
         <center><h3>The 5 Most Highly-Trafficked Articles</h3></center>
         <div class="col-lg-12" style="height: 50px"></div>
@@ -285,7 +286,7 @@
             The focus of this article is really to investigate the impact of the position of the links within a page. So let's look at that by plotting the density map highilighting where the clicks are usually done.
           </p>
           <center>
-          <iframe src="assets/plotly/density_map.html" width="800" height="1000", class="center"></iframe>
+          <iframe src="assets/plotly/density_map.html" width="800" height="800", class="center"></iframe>
           </center>
           </html>
 
@@ -386,6 +387,8 @@
             Interesting! So, the source article length distribution is different in both groups. Thus, not all links have the same probability to be at the top of an article since it depends on the length of the article in which they exist. 
             <br> Hold on! We are not done yet with confounders! The position of a link is not only affected by the length of the source article, but also by the topic of the source. It's time to use our exBERTise to examine the semantic similarity between the source article and its links and see how it relates to the link's position. 
             </p>
+            <br>
+
             <center><h3>Semantic textual similarity </h3></center>
 
             <p style="text-align: left;">
@@ -403,6 +406,7 @@
             <br> The logic behind this analysis is the following: if the Wikipedia page is about a specific topic, the links which are at the top of the page are more likely used to define or explain the topic. Therefore, the semantic similarity between the source article and the links acts as a confounding factor in our study.
             <br>Handling textual data leads us to explore Natural Language Processing tools aiming at extracting meaningful data. Semantic similarity is the task of assessing the textual semantic similarity between two sentences. For each source/target article, a similarity score is assigned to each pair. The BERT model was used to generate encodings and the cosine distance was used to caluclate the semantic similarity. Now, let’s visualize the distribution of similarity scores in both the treated and control groups. 
             </p>
+            <br>
             <br>
             <div class="col-lg-12 content">
               <div class="row">
@@ -453,7 +457,7 @@
             Another one! let’s visualize the new linear regression            
             </p>
             <div class="col-lg-12 content">
-              <img src="assets/img/matching/regression_final.png" width="400" height="400" class="img-fluid" alt="">
+              <iframe src="assets/plotly/CTR_ypos_plot_reg.html" width="1200" height="700", class="center"></iframe>
             </div>
             <p style="text-align: left;">
               It seems like even after fixing the source article, this latter did not result in a stronger relationship between the position and the CTR. 
@@ -500,9 +504,9 @@
         <p>
           Based on the conclusion of our study, the limitations of Wikispeedia dataset and the lessons learned through this work, we can suggest the following future work to improve the article findings:
           <br>
-          <br>1.	Make the observational study stronger by adding new covariates and test them with multiple setups.
-          <br>2.	Expand the dataset by using Wikipedia traffic data instead of Wikispeedia data. 
-          <br>3.	Generalize the findings to standard webpages. Webpages can collect data with more features which can make the study stronger.
+          <br>&emsp;&emsp;1.	Make the observational study stronger by adding new covariates and test them with multiple setups.
+          <br>&emsp;&emsp;2.	Expand the dataset by using Wikipedia traffic data instead of Wikispeedia data. 
+          <br>&emsp;&emsp;3.	Generalize the findings to standard webpages. Webpages can collect data with more features which can make the study stronger.
 
           </p>
 
