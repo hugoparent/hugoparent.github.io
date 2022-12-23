@@ -64,7 +64,7 @@
       <h1>The ABCs of Navigation:</h1>
       <h2></h2>
       <h1>Optimizing Your Webpage for Users</h1>
-      <p>Observing <span class="typed" data-typed-items="Link Positioning, Semantic Distance, Article Length"></span></p>
+      <p>Observing <span class="typed" data-typed-items="Link Positioning, Click-Through Rate, Semantic Similarity, Article Length"></span></p>
       <br>Prepared by:
         <br>
         <span style="font-size: 0.8em">
@@ -115,22 +115,31 @@
               Articles which links to many places generally cover important topics and are more likely to be visited while 
               link surfing. The United States article , for instance, has a wave of 294 links, so be prepared for a wild ride.
             </p>
-
         </div>
+        
 
         <div class="row"
-          <div class="col-lg-12" style="height: 100px"></div>
+          <div class="col-lg-6" style="height: 100px">
           <h3>
+            <br>
             <center>Research Questions</center>
-            <div class="col-lg-12" style="height: 50px"></div>
+          </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3" style="height: 50px"></div>
+          <div class="col-lg-6" style="height: 50px">
+            <h5>
             <ul>
               <li>How to best represent the popularity of a link?</li>
               <li>Does the position of the link on the page influence the click through rate (CTR)?</li>
               <ul>
                 <li>If so, is it possible to quantify this influence?</li>
             </ul>
-          </h3>
-        </div>
+          </h5>
+        </div>    
+      </div>
+        
         <!-- 
         <div class="row">
           <div class="col-lg-6 content">
@@ -342,15 +351,15 @@
           <p>
             It would seem that indeed, links on top of the pages are among the most popular. Another way to visualize this relation is by performing an ordinary least squares regression (OLS). As a result, we obtain the following regression plot:
           </p>
-            <iframe src="assets/plotly/CTR_ypos_plot_reg.html" width="1200" height="700", class="center"></iframe>
+            <iframe src="assets/plotly/CTR_ypos_plot_reg.html" width="900" height="600", class="center"></iframe>
 
           
 
         
 
         <p>Again, we see that in general, links positioned on top tend to have a higher CTR.
-          <br>Of course, this is just a superficial analysis and we can’t draw valid reasoning from it. ADA students don’t just jump to conclusions!🏊
-          <br>As we are handling data which is outside our control, we should definitely talk about observational studies.  
+        Of course, this is just a superficial analysis and we can’t draw valid reasoning from it. ADA students don’t just jump to conclusions!🏊
+        As we are handling data which is outside our control, we should definitely talk about observational studies.  
           </p>
       
 
@@ -376,10 +385,10 @@
            <div class="col-lg-12 content">
             <div class="row">
               <div class="col-lg-6">
-                <img src="assets/img/matching/boxplot_length.png" width="300" height="300" class="img-fluid" alt="">
+                <iframe src="assets/plotly/boxplot_length.html" width="450" height="500", class="center"></iframe>
               </div>
               <div class="col-lg-6">
-                <img src="assets/img/matching/distribution_length.png" width="400" height="400" class="img-fluid" alt="">
+                <img src="assets/img/matching/distribution_length.png" width="650" height="650" class="img-fluid" alt="">
               </div>
             </div>
             </div>
@@ -411,10 +420,10 @@
             <div class="col-lg-12 content">
               <div class="row">
                 <div class="col-lg-6">
-                  <img src="assets/img/matching/boxplot_semantic.png" width="300" height="300" class="img-fluid" alt="">
+                  <iframe src="assets/plotly/boxplot_semantic.html" width="450" height="500", class="center"></iframe>
                 </div>
                 <div class="col-lg-6">
-                  <img src="assets/img/matching/distribution_semantic.png" width="400" height="400" class="img-fluid" alt="">
+                  <img src="assets/img/matching/distribution_semantic.png" width="650" height="650" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -444,7 +453,7 @@
             Alright! The distribution is not very different from the one we had before the matching. We redo the linear regression between the link position and its CTR and we find a significant coefficient of -0.2.
             </p>
             <div class="col-lg-12 content">
-              <img src="assets/img/matching/regression_after_matching.png" width="400" height="400" class="img-fluid" alt="">
+              <iframe src="assets/plotly/CTR_ypos_plot_reg_inter.html" width="900" height="600", class="center"></iframe>
             </div>
             <p style="text-align: left;">
               Again, this coefficient is nearly the same as the one we found before matching.     This could indicate that the confounders we set are not significantly influencing the relationship between the position and the outcome variable, the CTR. 
@@ -457,7 +466,7 @@
             Another one! let’s visualize the new linear regression            
             </p>
             <div class="col-lg-12 content">
-              <iframe src="assets/plotly/CTR_ypos_plot_reg.html" width="1200" height="700", class="center"></iframe>
+              <iframe src="assets/plotly/CTR_ypos_plot_match.html" width="900" height="600", class="center"></iframe>
             </div>
             <p style="text-align: left;">
               It seems like even after fixing the source article, this latter did not result in a stronger relationship between the position and the CTR. 
@@ -477,7 +486,7 @@
         <p>
           Based on the above findings, we can conclude that there is a significant correlation between the position of a link and its CTR. However, we did not find any imporvment when we addressed the potential influence of confounders.
           In fact, the matching did not improve the linear regression results. This could be due to the fact that an unobserved confounder is still present. The most suspectible confounder is the characteristics of the users who click on the links. Since the data of Wikispeedia was collected by users who are motivated to win
-          the game thus, they are more likely to search intensevely for the links. Other characteristics of the users could also be a confounder, such age,education, etc. Since we do not have access to this data, we cannot control for it.
+          the game thus, they are more likely to search intensevely for the links. Other characteristics of the users could also be a confounder, such age, education, etc. Since we do not have access to this data, we cannot control for it.
           <br>
           <br>As outlined in our research questions, we aimed to understand the impact of the position of a link on its CTR in order to improve the navigation on a Webpage. Our results are relatively encouraging since we found that the position of a link is a significant factor in determining its CTR.
           All these findings are based on the data collected from Wikispeedia game so it is important to be cautious about the similarities and differences between Wikipedia articles and standard webpages. Wikipedia, articles for example, the links density in Wikipedia articles is much higher than in standard webpages.
@@ -533,9 +542,7 @@
         <a href="https://github.com/epfl-ada/ada-2022-project-adaandthelovelaces/blob/main/notebook.ipynb">Link to Supporting Notebook</a>
       </div>
       <br>
-      <div class="copyright">
-        &copy; Copyright <strong><span>MyResume</span></strong>. All Rights Reserved
-      </div>
+
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
